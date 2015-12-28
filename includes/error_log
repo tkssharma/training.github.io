@@ -1,0 +1,153 @@
+[11-Jan-2015 01:20:08 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_myblog'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:11
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(11): PDO->__construct('mysql:host=genn...', 'gnexttra_myblog', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 11
+[11-Jan-2015 01:28:01 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:11
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(11): PDO->__construct('mysql:host=genn...', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 11
+[11-Jan-2015 01:28:15 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:11
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(11): PDO->__construct('mysql:host=genn...', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 11
+[11-Jan-2015 01:29:15 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blog'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:11
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(11): PDO->__construct('mysql:host=serv...', 'gnexttra_blog', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 11
+[11-Jan-2015 01:30:26 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:11
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(11): PDO->__construct('mysql:host=serv...', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 11
+[11-Jan-2015 01:31:20 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:11
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(11): PDO->__construct('mysql:host=serv...', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 11
+[11-Jan-2015 01:31:21 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:11
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(11): PDO->__construct('mysql:host=serv...', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 11
+[11-Jan-2015 01:31:55 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=serv...', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 01:35:31 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 01:35:33 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 11:46:53 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 11:46:57 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 11:46:58 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 11:58:35 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 11:58:37 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 11:58:39 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 11:58:41 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_blogdb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_blogdb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:16:10 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:16:13 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:16:25 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:16:27 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:12
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(12): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:12 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:12 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14
+[11-Jan-2015 12:19:13 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:13 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14
+[11-Jan-2015 12:19:14 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:14 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14
+[11-Jan-2015 12:19:15 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:15 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14
+[11-Jan-2015 12:19:16 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:16 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14
+[11-Jan-2015 12:19:17 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:17 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14
+[11-Jan-2015 12:19:17 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:17 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14
+[11-Jan-2015 12:19:17 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES) in /home/gnexttrain/public_html/aboutme/includes/config.php on line 12
+[11-Jan-2015 12:19:17 Asia/Calcutta] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'gnexttra_mydb'@'server12.hostingraja.in' (using password: YES)' in /home/gnexttrain/public_html/aboutme/includes/config.php:14
+Stack trace:
+#0 /home/gnexttrain/public_html/aboutme/includes/config.php(14): PDO->__construct('mysql:host=198....', 'gnexttra_mydb', 'mydreamgf')
+#1 {main}
+  thrown in /home/gnexttrain/public_html/aboutme/includes/config.php on line 14

@@ -1,0 +1,40 @@
+
+
+<div data-ui-view>
+  <section class="section section-learn-these-tools">
+    <div class="container">
+
+      <div class="title-subtitle-block">
+        <h2 class="title">Youtube playlist on latest technologies</h2>
+
+        <p class="subtitle">
+          <i>Browse Lessons by Technology</i>
+        </p>
+      </div>
+      <!-- title-subtitle-block -->
+
+      <div class="lessons-categories-holder">
+        <div class="row">
+          <div
+            ng-repeat="data in YouTubeData.youtube " ng-if="data.playlisturl != '' ">
+            <h3>Youtube Tutorial series on {{data.technology}}</h3>
+            <section class="section text-center">
+            <div class="container videoWrapper">
+             <iframe height="600px" width="1100px" ng-src="{{data.link | trusted}}" frameborder="0" allowfullscreen></iframe>
+             
+             
+            </div>
+
+          </section>
+
+          </div>
+
+
+        </div>
+        <!-- lessons-categories-holder -->
+      </div>
+      <!-- container -->
+  </section>
+  <!-- section-learn-these-tools -->
+
+</div>
