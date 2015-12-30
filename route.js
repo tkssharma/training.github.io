@@ -293,7 +293,7 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 		angular.module("youtubeportal").filter('trusted', ['$sce', function ($sce) {
-	return function(url) {
+	     return function(url) {
 		return $sce.trustAsResourceUrl(url);
 	};
 }]);

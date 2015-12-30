@@ -16,7 +16,7 @@
       <div class="lessons-categories-holder">
         <div class="row">
           <div
-            ng-repeat="app in applicationData.application | filter : { technologytype : 'web' } track by $index">
+            ng-repeat="app in applicationData | filter : { technologytype : 'web' } track by $index">
 
             <a href="#/web/{{app.technologyname}}">
               <div class="col-sm-6 col-md-4 item">
