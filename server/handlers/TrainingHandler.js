@@ -14,6 +14,7 @@ var TrainingHandler = function() {
     //get youtube video calls
 
     this.createYouTubeVideo = createYouTubeVideo;
+    this.getYouTubeVideosByCourseId = getYouTubeVideosByCourseId;
     this.getAllYouTubeVideos = getAllYouTubeVideos;
 	this.getAllYouTubeVideosByTechnologyName = getAllYouTubeVideosByTechnologyName;
 
@@ -90,6 +91,16 @@ function createYouTubeVideo(req,res,next) {
 
 function getAllYouTubeVideos(req,res,next) {
 	Youtube.find({}, function (err, youtube) {
+		if (err) {return next(err);}
+		else {
+			res.send(youtube);
+		}
+	});
+};
+
+function getYouTubeVideosByCourseId(req,res,next) {
+	console.log(req.params.course_id);
+	Youtube.find({course_id : req.params.course_id}, function (err, youtube) {
 		if (err) {return next(err);}
 		else {
 			res.send(youtube);

@@ -20,18 +20,6 @@ var TrainingSchema =  new Schema(
 		}
 );
 
-var YoutubeVideosSchema =  new Schema(
-		{
-		course_name: {type: String, required: false}
-		,link: {type: String, required: true}
-		,description: {type: String, required: true}
-		,technology: {type: String, required: false}
-		,shortdescription: {type: String, required: false}
-		,longdescription: {type: String, required: false}
-		,logo: {type:String, required:false}
-
-		}
-);
 
 
 

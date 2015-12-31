@@ -184,9 +184,50 @@
  		}
 
  	})
+
+ 	.state("all.technology.youtube", {
+ 		url : "/:youtube_id",
+ 		templateUrl : "app/pages/common_technology_youtube.html",
+ 		resolve : {
+ 			factory5 : LoadYoutubeDataOneCourse
+
+ 		}
+
+ 	})
+
+ 		.state("web.technology.youtube", {
+ 		url : "/:youtube_id",
+ 		templateUrl : "app/pages/common_technology_youtube.html",
+ 		resolve : {
+ 			factory5 : LoadYoutubeDataOneCourse
+
+ 		}
+
+ 	})
+
+ 		.state("mobile.technology.youtube", {
+ 		url : "/:youtube_id",
+ 		templateUrl : "app/pages/common_technology_youtube.html",
+ 		resolve : {
+ 			factory5 : LoadYoutubeDataOneCourse
+
+ 		}
+
+ 	})
+
+ 		.state("java.technology.youtube", {
+ 		url : "/:youtube_id",
+ 		templateUrl : "app/pages/common_technology_youtube.html",
+ 		resolve : {
+ 			factory5 : LoadYoutubeDataOneCourse
+
+ 		}
+
+ 	})
+
  	.state("web.technology", {
  		url : "/:course_id",
- 		templateUrl : "app/pages/common_technology.html",
+ 		templateUrl : "app/pages/web_technology.html",
  		resolve : {
  			factory4 : LoadapplicationDataOneTechnology,
  			factory5 : LoadYoutubeDataOneTechnology
@@ -196,7 +237,7 @@
  	})
  	.state("java.technology", {
  		url : "/:course_id",
- 		templateUrl : "app/pages/common_technology.html",
+ 		templateUrl : "app/pages/java_technology.html",
  		resolve : {
  			factory4 : LoadapplicationDataOneTechnology,
  			factory5 : LoadYoutubeDataOneTechnology
@@ -206,7 +247,7 @@
  	})
  	.state("mobile.technology", {
  		url : "/:course_id",
- 		templateUrl : "app/pages/common_technology.html",
+ 		templateUrl : "app/pages/mobile_technology.html",
  		resolve : {
  			factory4 : LoadapplicationDataOneTechnology,
  			factory5 : LoadYoutubeDataOneTechnology
@@ -222,67 +263,6 @@
  	.state("createVideo", {
  		url : "/createVideo",
  		templateUrl : "app/pages/createVideo.html"
-
- 	})
-
- 	.state("web.angular.course", {
- 		url : "/course/:course_id",
- 		templateUrl : "app/pages/webtechnology/youtube.html"
-
- 	})
- 	.state("web.grunt.course", {
- 		url : "/course/:course_id",
- 		templateUrl : "app/pages/webtechnology/youtube.html"
-
- 	})
-
- 	.state("web.node", {
- 		url : "/node",
- 		templateUrl : "app/pages/webtechnology/node.html",
-
- 	})
-
- 	.state("web.javascript", {
- 		url : "/javascript",
- 		templateUrl : "app/pages/webtechnology/javascript.html",
-
- 	})
- 	.state("web.grunt", {
- 		url : "/grunt",
- 		templateUrl : "app/pages/webtechnology/grunt.html",
-
- 	})
- 	.state("web.jquery", {
- 		url : "/grunt",
- 		templateUrl : "app/pages/webtechnology/jquery.html",
-
- 	})
- 	.state("web.saas", {
- 		url : "/grunt",
- 		templateUrl : "app/pages/webtechnology/saas.html",
-
- 	})
- 	.state("web.bootstrap", {
- 		url : "/grunt",
- 		templateUrl : "app/pages/webtechnology/bootstrap.html",
-
- 	})
-
- 	.state("web.html5", {
- 		url : "/grunt",
- 		templateUrl : "app/pages/webtechnology/html5.html",
-
- 	})
-
- 	.state("enterprise", {
- 		url : "/enterprise",
- 		templateUrl : "app/pages/enterprise.html",
-
- 	})
-
- 	.state("course", {
- 		url : "/course/:trainingname",
- 		templateUrl : "app/training/course.php",
 
  	});
  	$urlRouterProvider.otherwise("/");
@@ -413,9 +393,25 @@
 						deferred.reject(error);
 					});
  	return deferred.promise;
-
-
  }
+
+
+ LoadYoutubeDataOneCourse = function ($rootScope,$q,$http,$stateParams )
+ {
+	 	var deferred = $q.defer();
+
+	 	$http.get(
+	 		'/api/getYouTubeVideosByCourseId/'+ $stateParams.youtube_id)
+	 	.success(function(response) {
+	 		deferred.resolve(response);
+	 		$rootScope.YouTubeDataOneCourse= response;
+
+	 	}).error(function(error) {
+							// Handle error case
+							deferred.reject(error);
+						});
+	 	return deferred.promise;
+	 }
 
 
 

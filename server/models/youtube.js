@@ -17,6 +17,7 @@ var YoutubeVideosSchema =  new Schema(
 		,shortdescription: {type: String, required: false}
 		,longdescription: {type: String, required: false}
 		,logo: {type:String, required:false}
+		,course_id: {type:String, required:false}
 
 		}
 );

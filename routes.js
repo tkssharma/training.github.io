@@ -26,7 +26,7 @@ function setup(app, handlers) {
 	app.post('/api/createYouTubeVideo', handlers.training.createYouTubeVideo);
 	app.get('/api/getAllYouTubeVideos', handlers.training.getAllYouTubeVideos);
 	app.get('/api/getAllYouTubeVideosByTechnologyName/:technology', handlers.training.getAllYouTubeVideosByTechnologyName);
-
+	app.get('/api/getYouTubeVideosByCourseId/:course_id', handlers.training.getYouTubeVideosByCourseId);
 
 
 	console.log("Successfully set up routes");
