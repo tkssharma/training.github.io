@@ -11,8 +11,8 @@ var DEV_DOMAIN = 'http://allakarte.herokuapp.com';
 
 var TOKEN_SECRET = 'awesomeallakarte';
 //for Dev and production
-var MONGO_DB_URI='mongodb://localhost:27017/myproject';
-//var MONGO_DB_URI='mongodb://heroku_42vmm1tq:g4nm4o3t58ejehc79g1rdr3jah@ds037205.mongolab.com:37205/heroku_42vmm1tq';
+//var MONGO_DB_URI='mongodb://localhost:27017/myproject';
+var MONGO_DB_URI='mongodb://heroku_42vmm1tq:g4nm4o3t58ejehc79g1rdr3jah@ds037205.mongolab.com:37205/heroku_42vmm1tq';
 
 var RESET_TOKEN_IN_HOURS = 6;
 
