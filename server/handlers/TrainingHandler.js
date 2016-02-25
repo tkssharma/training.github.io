@@ -64,11 +64,6 @@ function getAllTrainingByTechnologyName(req,res,next) {
 	});
 };
 
-//..............................................
-
-
-
-
 
 function createYouTubeVideo(req,res,next) {
 	console.log("Registering Training");
@@ -76,12 +71,15 @@ function createYouTubeVideo(req,res,next) {
 
     var youtube = new Youtube();
 
+   youtube.id = req.body.id;
     youtube.course_name = req.body.coursename;
     youtube.link = req.body.link;
+    youtube.technology = req.body.technology;
 	youtube.description = req.body.description;
 	youtube.shortdescription = req.body.shortdescription;
 	youtube.longdescription = req.body.longdescription;
 	youtube.logo = req.body.logo;
+	youtube.course_id = req.body.course_id;
 
     youtube.save(function(err){
         if (err) {return next(err);}
@@ -114,6 +112,7 @@ function getAllYouTubeVideosByTechnologyName(req,res,next) {
 	Youtube.find({technology : req.params.technology}, function (err, youtube) {
 		if (err) {return next(err);}
 		else {
+			console.log(youtube);
 			res.send(youtube);
 		}
 	});
