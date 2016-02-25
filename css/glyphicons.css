@@ -21,3 +21,11 @@
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0
 }
+
+.block-lessons-series .media-holder {
+    background: #555555;
+    min-height: 180px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}

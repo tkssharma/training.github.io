@@ -33,7 +33,9 @@ jsSources = [
 	'angular/angular.min.js',
 	'angular/angular-ui-router.min.js',
 	'angular/angular-resource.min.js',
-	'js/main.js'
+	'js/app.js',
+	'js/controller.js',
+	'js/factory.js',
 ];
 
 

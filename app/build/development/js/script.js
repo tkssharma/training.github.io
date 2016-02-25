@@ -276,6 +276,7 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
  * @ bootstrap module added
  */
  (function () {
+ 	'use strict';
  	var myApplication = angular.module('youtubeportal', [ 'ui.router', 'ngResource'])
  	var initInjector = angular.injector([ "ng" ]);
  	var $http = initInjector.get("$http");
@@ -314,68 +315,9 @@ k+"(\\W|$)","g"),function(b,a){return e+a})):c=c.replace(new RegExp("(/?):"+k+"(
 
  		});
 
- 	myApplication
- 	.controller(
- 		"parentCntl",
- 		[
- 		"$scope",
- 		"$rootScope",
- 		'resourceData',
-
- 		function parentCntl($scope, $rootScope,resourceData) {
-
- 			$rootScope.resourceData = resourceData;
- 			console.log($rootScope.resourceData);
-
- 			$scope.submitVideo = function(form)
- 			{
- 				console.log($scope.training);
-
- 				if(form.$invalid)
- 				{
- 					$scope.videoSubmitted = true;
- 					return;
- 				}
- 				$http.post(
- 					'/api/createYouTubeVideo',$scope.video)
- 				.success(function(response) {
-
- 					console.log("SUCCESS");
- 					alert("added");
-
- 				}).error(function(error) {
-													// Handle error case
-
-												});
-
- 			}
- 			$scope.createTraining = function(form)
- 			{
- 				if(form.$invalid)
- 				{
- 					alert("invalid..");
- 					$scope.trainingSubmitted = true;
- 					return;
- 				}
- 				$http.post(
- 					'/api/createTraining',$scope.training)
- 				.success(function(response) {
- 					alert("added");
- 					console.log("SUCCESS");
-
- 				}).error(function(error) {
-													// Handle error case
-
-												});
- 			}
 
 
- 		}]);
-
-
-
-angular.module('youtubeportal').config(config)
-.controller("Maincontroller" ,Maincontroller );
+angular.module('youtubeportal').config(config);
 config.$inject = [ '$stateProvider', '$urlRouterProvider' ];
 function config($stateProvider, $urlRouterProvider) {
 
@@ -384,9 +326,12 @@ function config($stateProvider, $urlRouterProvider) {
 		url : "/",
 		templateUrl : "app/pages/main.html",
 		resolve : {
-
-
-			factory : LoadapplicationData
+			mymessages : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadapplicationData();
+			} ]
 		}
 
 	})
@@ -394,10 +339,12 @@ function config($stateProvider, $urlRouterProvider) {
 		url : "/all",
 		templateUrl : "app/pages/common.html",
 		resolve : {
-
-
-			factory : LoadapplicationData
-
+			mymessages : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadapplicationData();
+			} ]
 		}
 
 	})
@@ -405,20 +352,31 @@ function config($stateProvider, $urlRouterProvider) {
 		url : "/playlists",
 		templateUrl : "app/pages/playlists.html",
 		resolve : {
-			factory : LoadYoutubeData
+			mymessages : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadYoutubeData();
+			} ]
 		}
 
 	})
 	.state("web", {
 		url : "/web",
 		templateUrl : "app/pages/web.html",
-
-		resolve : {
-
-
-			factory : LoadapplicationData,
-			factory1 : LoadYoutubeData
-
+        resolve : {
+			mymessages1 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadapplicationData();
+			} ],
+			mymessages2 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadYoutubeData();
+			} ]
 
 		}
 
@@ -426,11 +384,19 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("java", {
 		url : "/java",
 		templateUrl : "app/pages/java.html",
-		resolve : {
-
-
-			factory : LoadapplicationData,
-			factory1 : LoadYoutubeData
+		 resolve : {
+			mymessages1 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadapplicationData();
+			} ],
+			mymessages2 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadYoutubeData();
+			} ]
 
 		}
 
@@ -438,11 +404,19 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("mobile", {
 		url : "/mobile",
 		templateUrl : "app/pages/mobile.html",
-		resolve : {
-
-
-			factory : LoadapplicationData,
-			factory1 : LoadYoutubeData
+		 resolve : {
+			mymessages1 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadapplicationData();
+			} ],
+			mymessages2 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadYoutubeData();
+			} ]
 
 		}
 
@@ -450,9 +424,19 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("all.technology", {
 		url : "/:course_id",
 		templateUrl : "app/pages/common_technology.html",
-		resolve : {
-			factory4 : LoadapplicationDataOneTechnology,
-			factory5 : LoadYoutubeDataOneTechnology
+		 resolve : {
+			mymessages1 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneTechnology($stateParams.course_id);
+			} ],
+			mymessages2 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadapplicationDataOneTechnology($stateParams.course_id);
+			} ]
 
 		}
 
@@ -462,8 +446,12 @@ function config($stateProvider, $urlRouterProvider) {
 		url : "/:youtube_id",
 		templateUrl : "app/pages/common_technology_youtube.html",
 		resolve : {
-			factory5 : LoadYoutubeDataOneCourse
-
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+			} ]
 		}
 
 	})
@@ -471,9 +459,14 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("web.technology.youtube", {
 		url : "/:youtube_id",
 		templateUrl : "app/pages/common_technology_youtube.html",
-		resolve : {
-			factory5 : LoadYoutubeDataOneCourse
 
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+			} ]
 		}
 
 	})
@@ -481,9 +474,14 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("mobile.technology.youtube", {
 		url : "/:youtube_id",
 		templateUrl : "app/pages/common_technology_youtube.html",
-		resolve : {
-			factory5 : LoadYoutubeDataOneCourse
 
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+			} ]
 		}
 
 	})
@@ -492,8 +490,12 @@ function config($stateProvider, $urlRouterProvider) {
 		url : "/:youtube_id",
 		templateUrl : "app/pages/common_technology_youtube.html",
 		resolve : {
-			factory5 : LoadYoutubeDataOneCourse
-
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+			} ]
 		}
 
 	})
@@ -501,9 +503,20 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("web.technology", {
 		url : "/:course_id",
 		templateUrl : "app/pages/web_technology.html",
-		resolve : {
-			factory4 : LoadapplicationDataOneTechnology,
-			factory5 : LoadYoutubeDataOneTechnology
+
+		 resolve : {
+			mymessages1 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneTechnology($stateParams.course_id);
+			} ],
+			mymessages2 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadapplicationDataOneTechnology($stateParams.course_id);
+			} ]
 
 		}
 
@@ -511,9 +524,19 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("java.technology", {
 		url : "/:course_id",
 		templateUrl : "app/pages/java_technology.html",
-		resolve : {
-			factory4 : LoadapplicationDataOneTechnology,
-			factory5 : LoadYoutubeDataOneTechnology
+		  resolve : {
+			mymessages1 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneTechnology($stateParams.course_id);
+			} ],
+			mymessages2 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadapplicationDataOneTechnology($stateParams.course_id);
+			} ]
 
 		}
 
@@ -521,9 +544,19 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("mobile.technology", {
 		url : "/:course_id",
 		templateUrl : "app/pages/mobile_technology.html",
-		resolve : {
-			factory4 : LoadapplicationDataOneTechnology,
-			factory5 : LoadYoutubeDataOneTechnology
+		  resolve : {
+			mymessages1 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneTechnology($stateParams.course_id);
+			} ],
+			mymessages2 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadapplicationDataOneTechnology($stateParams.course_id);
+			} ]
 
 		}
 
@@ -587,109 +620,76 @@ angular
 			});
 
 	} ]);
+}) ();
 
 
 
 
-LoadapplicationData = function ($rootScope,$q,$http)
-{
-	var deferred = $q.defer();
-	if ($rootScope.applicationData) {
-		return true;
-	} else {
-		$http.get(
-			'/api/getAllTraining')
-		.success(function(response) {
-			deferred.resolve(response);
-			$rootScope.applicationData = response;
+/* bootstrap  Angular app for fetching common resources
+ * removed ng-app from index page to use manual bootstrap
+ * @ bootstrap module added
+ */
+ (function () {
+ 	'use strict';
+angular.module('youtubeportal')
+.controller(
+	"parentCntl",
+	[
+	"$scope",
+	"$rootScope",
+	'resourceData',
 
-		}).error(function(error) {
-						// Handle error case
-						deferred.reject(error);
-					});
-		return deferred.promise;
-	}
-}
+	function parentCntl($scope, $rootScope,resourceData) {
 
+		$rootScope.resourceData = resourceData;
+		console.log($rootScope.resourceData);
 
-LoadYoutubeData = function ($rootScope,$q,$http,$stateParams )
-{
-	var deferred = $q.defer();
-	if ($rootScope.YouTubeData) {
-		return true;
-	} else {
-		$http.get(
-			'/api/getAllYouTubeVideos')
-		.success(function(response) {
-			deferred.resolve(response);
-			$rootScope.YouTubeData = response;
+		$scope.submitVideo = function(form)
+		{
+			console.log($scope.training);
 
-		}).error(function(error) {
-						// Handle error case
-						deferred.reject(error);
-					});
-		return deferred.promise;
-	}
+			if(form.$invalid)
+			{
+				$scope.videoSubmitted = true;
+				return;
+			}
+			$http.post(
+				'/api/createYouTubeVideo',$scope.video)
+			.success(function(response) {
 
-}
+				console.log("SUCCESS");
+				alert("added");
 
-LoadapplicationDataOneTechnology = function ($rootScope,$q,$http,$stateParams )
-{
-	var deferred = $q.defer();
+			}).error(function(error) {
+													// Handle error case
 
-	$http.get(
-		'/api/getAllTrainingByTechnologyName/'+ $stateParams.course_id)
-	.success(function(response) {
-		deferred.resolve(response);
-		$rootScope.applicationDataOneTech = response;
+												});
 
-	}).error(function(error) {
-						// Handle error case
-						deferred.reject(error);
-					});
-	return deferred.promise;
+		}
+		$scope.createTraining = function(form)
+		{
+			if(form.$invalid)
+			{
+				alert("invalid..");
+				$scope.trainingSubmitted = true;
+				return;
+			}
+			$http.post(
+				'/api/createTraining',$scope.training)
+			.success(function(response) {
+				alert("added");
+				console.log("SUCCESS");
 
+			}).error(function(error) {
+													// Handle error case
 
-}
-LoadYoutubeDataOneTechnology = function ($rootScope,$q,$http,$stateParams )
-{
-	var deferred = $q.defer();
-
-	$http.get(
-		'/api/getAllYouTubeVideosByTechnologyName/'+ $stateParams.course_id)
-	.success(function(response) {
-		deferred.resolve(response);
-		$rootScope.YouTubeDataOneTech = response;
-
-	}).error(function(error) {
-						// Handle error case
-						deferred.reject(error);
-					});
-	return deferred.promise;
-}
+												});
+		}
 
 
-LoadYoutubeDataOneCourse = function ($rootScope,$q,$http,$stateParams )
-{
-	var deferred = $q.defer();
+	}]);
 
-	$http.get(
-		'/api/getYouTubeVideosByCourseId/'+ $stateParams.youtube_id)
-	.success(function(response) {
-		deferred.resolve(response);
-		$rootScope.YouTubeDataOneCourse= response;
-
-	}).error(function(error) {
-							// Handle error case
-							deferred.reject(error);
-						});
-	return deferred.promise;
-}
-
-
-
-
-
+angular.module('youtubeportal').controller("Maincontroller",Maincontroller);
 Maincontroller.$inject = ['$scope','$rootScope'];
 function Maincontroller($scope,$rootScope)
 
@@ -706,22 +706,130 @@ function Maincontroller($scope,$rootScope)
 
 	$scope.getYoutubeUrl = function(jsondata)
 	{
-
 		return jsondata.link;
 	}
-
-
 }
 
 angular.module("youtubeportal").filter('trusted', ['$sce', function ($sce) {
 	return function(url) {
 		return $sce.trustAsResourceUrl(url);
 	};
-
-
 }]);
 
 }) ();
+
+(function () {
+	'use strict';
+
+	angular
+	.module ( 'youtubeportal' )
+	.factory ( 'Mainfactory', Mainfactory );
+
+	Mainfactory.$inject = [ '$rootScope','$q','$http','$stateParams' ];
+	function Mainfactory ( $rootScope,$q,$http,$stateParams ) {
+		var Mainfactory = {};
+
+		Mainfactory.LoadapplicationData = LoadapplicationData;
+		Mainfactory.LoadYoutubeData = LoadYoutubeData;
+		Mainfactory.LoadapplicationDataOneTechnology = LoadapplicationDataOneTechnology;
+		Mainfactory.LoadYoutubeDataOneTechnology = LoadYoutubeDataOneTechnology;
+		Mainfactory.LoadYoutubeDataOneCourse = LoadYoutubeDataOneCourse;
+
+
+		return Mainfactory;
+		function LoadapplicationData ()
+		{
+			var deferred = $q.defer();
+			if ($rootScope.applicationData) {
+				return true;
+			} else {
+				$http.get(
+					'/api/getAllTraining')
+				.success(function(response) {
+					deferred.resolve(response);
+					$rootScope.applicationData = response;
+
+				}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+				return deferred.promise;
+			}
+		}
+		function LoadYoutubeData()
+		{
+			var deferred = $q.defer();
+			if ($rootScope.YouTubeData) {
+				return true;
+			} else {
+				$http.get(
+					'/api/getAllYouTubeVideos')
+				.success(function(response) {
+					deferred.resolve(response);
+					$rootScope.YouTubeData = response;
+
+				}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+				return deferred.promise;
+			}
+
+		}
+		function LoadapplicationDataOneTechnology(course_id)
+		{
+			var deferred = $q.defer();
+
+			$http.get(
+				'/api/getAllTrainingByTechnologyName/'+ course_id)
+			.success(function(response) {
+				deferred.resolve(response);
+				$rootScope.applicationDataOneTech = response;
+
+			}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+			return deferred.promise;
+
+
+		}
+		function LoadYoutubeDataOneTechnology(course_id)
+		{
+			var deferred = $q.defer();
+
+			$http.get(
+				'/api/getAllYouTubeVideosByTechnologyName/'+course_id)
+			.success(function(response) {
+				deferred.resolve(response);
+				$rootScope.YouTubeDataOneTech = response;
+
+			}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+			return deferred.promise;
+		}
+		function LoadYoutubeDataOneCourse(youtube_id)
+		{
+			var deferred = $q.defer();
+
+			$http.get(
+				'/api/getYouTubeVideosByCourseId/'+youtube_id)
+			.success(function(response) {
+				deferred.resolve(response);
+				$rootScope.YouTubeDataOneCourse= response;
+
+			}).error(function(error) {
+							// Handle error case
+							deferred.reject(error);
+						});
+			return deferred.promise;
+		}
+
+	}
+}) ();
+
 
 
 
