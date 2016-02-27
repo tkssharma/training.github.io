@@ -17,39 +17,39 @@
             <ul class="dropdown-menu">
               <li class="semi-bold"><a href="#/all">All</a></li>
                 <li>
-                  <a href="#/angular">Angular 2.0</a>
+                  <a href="#/web/angular2">Angular 2.0</a>
                 </li>
                 <li>
-                  <a href="#/web">AngularJS</a>
+                  <a href="#/web/angular">AngularJS</a>
                 </li>
                 <li>
-                  <a href="#/java">Git</a>
+                  <a href="#/common/git">Git</a>
                 </li>
                 <li>
-                  <a href="#/web">Java script V8</a>
+                  <a href="#/web/js">Java script V8</a>
                 </li>
                 <li>
-                  <a href="#/web">Grunt</a>
+                  <a href="#/web/grunt">Grunt</a>
                 </li>
                 <li>
-                  <a href="#/web">JavaScript</a>
+                  <a href="#/web/js">JavaScript</a>
                 </li>
                 <li>
-                  <a href="#/java">Java</a>
+                  <a href="#/java/java8">Java</a>
                 </li>
                 <li>
-                  <a href="#/web">Node.js</a>
+                  <a href="#/web/node">Node.js</a>
                 </li>
                 <li>
-                  <a href="#/java">J2EE</a>
+                  <a href="#/java/j2ee">J2EE</a>
                 </li>
                 <li>
-                  <a href="#/mobile">Mobile Android</a>
+                  <a href="#/mobile/android">Mobile Android</a>
                 </li>
                 <li>
-                  <a href="#/web">gulp/NPM/Yoman</a>
+                  <a href="#/web/build">gulp/NPM/Yoman</a>
                 </li>
-              
+
             </ul>
           </li>
           <li class="hidden-sm"><a href="#/playlists">Playlists</a></li>
@@ -75,7 +75,7 @@
                 </li>
             </ul>
           </li>
-         
+
           <li class=""><a href="#" data-toggle="dropdown" class="dropdown-toggle">Enterprise Training <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class="semi-bold"><a href="#/all">All</a></li>
@@ -88,29 +88,31 @@
                 <li>
                   <a href="#/mobile">Mobile Application Development</a>
                 </li>
-                
+
             </ul>
 
           </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right header-navigation-list">
-            <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Tarun Sharma <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
+
+               <li ng-if="isLoggedIn !== true" >
+                  <a href="#/login">Sign In</a>
+                </li>
+            <li ng-if="isLoggedIn === true"  class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{currentUserName.username}} <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
 
-                <li><a href="https://www.facebook.com/tarun.sharma.msp.engg">Facebook </a></li>
-                <li><a href="https://www.twitter.com/tkssharma">Twitter</a></li>
-                <li><a href="https://www.youtube.com/user/vibbbbbba/playlists">YouTube</a></li>
-                <li><a href="https://github.com/tkssharma">GitHub</a></li>
-                <li><a href="">Google +</a></li>
-                <li><a href="">Blog</a></li>
-               
+                <li><a href="https://www.facebook.com/tarun.sharma.msp.engg">Training </a></li>
+                <li><a href="">Profile</a></li>
+                <li><a href="">settings</a></li>
+                <li><a href="#/signout">signout</a></li>
+
               </ul>
 
             </li>
 
-          
+
         </ul>
       </div>
       <!--header-navigation-->

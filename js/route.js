@@ -1,46 +1,3 @@
-/* bootstrap  Angular app for fetching common resources
- * removed ng-app from index page to use manual bootstrap
- * @ bootstrap module added
- */
- (function () {
- 	'use strict';
- 	var myApplication = angular.module('youtubeportal', [ 'ui.router', 'ngResource'])
- 	var initInjector = angular.injector([ "ng" ]);
- 	var $http = initInjector.get("$http");
-
- 	angular
- 	.element(document)
- 	.ready(
- 		function() {
-
-
- 			myApplication
- 			.config([
- 				'$httpProvider',
- 				function($httpProvider) {
-										// initialize get if not there
-										if (!$httpProvider.defaults.headers.get) {
-											$httpProvider.defaults.headers.get = {};
-										}
-										$httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
-										$httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
-										$httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
-									} ]);
- 			$http.get('/api/getAllTraining')
- 			.then(
- 				function(response) {
- 					myApplication.constant("resourceData",
- 						response.data);
-
-
- 					angular.bootstrap(document,
- 						[ "youtubeportal" ]);
-
- 				}, function(errorResponse) {
-										// Handle error case
-									});
-
- 		});
 
 
 
@@ -288,6 +245,56 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+
+	.state(
+			"login",
+			{
+				url : "/login",
+				templateUrl : "partials/auth/login.html",
+				onEnter: [ '$state', 'AuthenticationService', function($state, AuthenticationService){
+					if (AuthenticationService.isLoggedIn()) {
+						$state.go('welcome');
+					};
+				}]
+			})
+		.state("signout", {
+			url : "/signout",
+			templateUrl : "partials/main.html",
+			onEnter: [ '$state', 'AuthenticationService', function($state, AuthenticationService){
+				AuthenticationService.ClearCredentials();
+				$state.go('login');
+			}]
+		})
+		.state(
+			"password",
+			{
+				url : "/password",
+				templateUrl : "partials/auth/forgotpassword.html",
+				onEnter: [ '$state', 'AuthenticationService', function($state, AuthenticationService){
+					if (AuthenticationService.isLoggedIn()) {
+						$state.go('home');
+					};
+				}]
+
+			})
+		.state(
+			"changepassword",
+			{
+				url : "/changepassword/:email/:token",
+				templateUrl : "partials/auth/changepassword.html"
+			})
+		.state(
+			"register",
+			{
+				url : "/register",
+				templateUrl : "partials/auth/register.html",
+				onEnter: [ '$state', 'AuthenticationService', function($state, AuthenticationService){
+					if (AuthenticationService.isLoggedIn()) {
+						$state.go('welcome');
+					};
+				}]
+			})
+
 	.state("createTraining", {
 		url : "/createTraining",
 		templateUrl : "app/pages/createTraining.html"

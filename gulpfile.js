@@ -30,15 +30,22 @@ if (env==='production') {
 }
 
 jsSources = [
-	'angular/angular.min.js',
-	'angular/angular-ui-router.min.js',
-	'angular/angular-resource.min.js',
-	'js/app.js',
-	'js/controller.js',
-	'js/factory.js',
+	'js/angular.min.js',
+	'js/js/angular-route.min.js',
+	'js/angular-resource.min.js',
+	'js/angular-cookies.min.js',
+	'app/module/bootstrap.js',
+	'app/module/module.js',
+	'app/route/route.js',
+	'js/angular-storage.js',
+	'app/controller/mainController.js',
+	'app/controller/authController.js',
+	'app/factory/authentication.service.js',
+	'app/factory/AuthResolver.js',
+	'app/factory/localstorage.js',
+	'app/factory/Mainfactory.js',
+	'app/factory/user.service.js'
 ];
-
-
 
 
 gulp.task('js', function() {

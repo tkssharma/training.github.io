@@ -33,7 +33,7 @@
 		}
 	</style>
 </head>
-<body >
+<body ng-controller="parentCntl">
  <header ng-include="'app/partials/header.html'"></header>
  <div class="bodyContent">
 	<div class="page-loading">
@@ -46,7 +46,24 @@
 <footer ng-include="'app/partials/footer.html'"></footer>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="app/build/development/js/script.js"></script>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-cookies.min.js"></script>
+<script src="app/module/bootstrap.js"></script>
+<script src="app/module/module.js"></script>
+<script src="js/angular-storage.js" type="text/javascript"></script>
+<script src="app/route/route.js"></script>
+<script src="app/controller/mainController.js"></script>
+<script src="app/controller/authController.js"></script>
+<script src="app/factory/authentication.service.js"></script>
+<script src="app/factory/AuthResolver.js"></script>
+<script src="app/factory/localstorage.js"></script>
+<script src="app/factory/Mainfactory.js"></script>
+<script src="app/factory/user.service.js"></script>
+
+
 </body>
 </body>
 </html>
