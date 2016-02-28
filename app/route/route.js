@@ -80,7 +80,7 @@ function config($stateProvider, $urlRouterProvider) {
 
 	})
 	.state("DevOps", {
-		url : "/web",
+		url : "/DevOps",
 		templateUrl : "app/pages/web.html",
         resolve : {
 			mymessages1 : [
