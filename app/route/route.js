@@ -79,7 +79,7 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
-	.state("devops", {
+	.state("DevOps", {
 		url : "/web",
 		templateUrl : "app/pages/web.html",
         resolve : {
@@ -203,7 +203,7 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
-	.state("devops.technology.youtube", {
+	.state("DevOps.technology.youtube", {
 		url : "/:youtube_id",
 		templateUrl : "app/pages/common_technology_youtube.html",
 
@@ -253,7 +253,7 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
-	.state("devops.technology", {
+	.state("DevOps.technology", {
 		url : "/:course_id",
 		templateUrl : "app/pages/web_technology.html",
 
