@@ -11,8 +11,8 @@ angular.module('youtubeportal')
 	"$scope",
 	"$rootScope",
 	'resourceData',
-
-	function parentCntl($scope, $rootScope,resourceData) {
+	'$http',
+	function parentCntl($scope, $rootScope,resourceData,$http) {
 
 		$rootScope.resourceData = resourceData;
 		console.log($rootScope.resourceData);
@@ -36,7 +36,7 @@ angular.module('youtubeportal')
 			}).error(function(error) {
 													// Handle error case
 
-												});
+		});
 
 		}
 		$scope.createTraining = function(form)

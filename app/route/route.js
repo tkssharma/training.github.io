@@ -1,7 +1,7 @@
 
 
 
-
+(function() {
 angular.module('youtubeportal').config(config);
 config.$inject = [ '$stateProvider', '$urlRouterProvider' ];
 function config($stateProvider, $urlRouterProvider) {
@@ -376,7 +376,7 @@ angular
 
 	} ]);
 
-
+})();
 
 
 
