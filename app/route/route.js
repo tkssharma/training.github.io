@@ -79,6 +79,26 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+	.state("devops", {
+		url : "/web",
+		templateUrl : "app/pages/web.html",
+        resolve : {
+			mymessages1 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadapplicationData();
+			} ],
+			mymessages2 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadYoutubeData();
+			} ]
+
+		}
+
+	})
 	.state("java", {
 		url : "/java",
 		templateUrl : "app/pages/java.html",
@@ -183,6 +203,20 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+	.state("devops.technology.youtube", {
+		url : "/:youtube_id",
+		templateUrl : "app/pages/common_technology_youtube.html",
+
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+			} ]
+		}
+
+	})
 
 	.state("java.technology.youtube", {
 		url : "/:youtube_id",
@@ -219,6 +253,28 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+	.state("devops.technology", {
+		url : "/:course_id",
+		templateUrl : "app/pages/web_technology.html",
+
+		 resolve : {
+			mymessages1 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneTechnology($stateParams.course_id);
+			} ],
+			mymessages2 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadapplicationDataOneTechnology($stateParams.course_id);
+			} ]
+
+		}
+
+	})
+
 	.state("java.technology", {
 		url : "/:course_id",
 		templateUrl : "app/pages/java_technology.html",
