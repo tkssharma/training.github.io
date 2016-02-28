@@ -46,6 +46,12 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+	.state("welcome", {
+		url : "/welcome",
+		templateUrl : "app/pages/welcome.html",
+
+
+	})
 	.state("playlists", {
 		url : "/playlists",
 		templateUrl : "app/pages/playlists.html",

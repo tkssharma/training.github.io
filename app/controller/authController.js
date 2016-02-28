@@ -20,7 +20,7 @@
 					AuthenticationService.saveUserId(response.user.user_id);
 					AuthenticationService.saveUserName($scope.data.email);
 					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-					$state.go('all');
+					$state.go('welcome');
 				} else {
 					$(".page-loading").addClass("hidden");
 					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
@@ -82,7 +82,7 @@
 					AuthenticationService.saveUserId(response.user.user_id);
 					AuthenticationService.saveUserName(response.user.username);
 					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-					$state.go('all');
+					$state.go('welcome');
 				} else {
 					$(".page-loading").addClass("hidden");
 					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
@@ -119,7 +119,7 @@
 			.then(function(response) {
 			$(".page-loading").addClass("hidden");
 				if (response.success) {
-					$state.go('login');
+					$state.go('welcome');
 				}
 				else
 				{

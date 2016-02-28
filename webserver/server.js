@@ -16,6 +16,7 @@ var
 	M               = require('./middlware'),
 	AuthHandler = require('./handlers/AuthHandler'),
 	TrainingHandler = require('./handlers/TrainingHandler'),
+	LearningHandler = require('./handlers/LearningHandler'),
 	passport = require('passport'),
 	User = require('./models/user'),
 	BodyParser = require("body-parser")
@@ -167,6 +168,13 @@ webServer.prototype._setRoutes = function(handlers){
 	self.app.get('/api/getAllYouTubeVideosByTechnologyName/:technology', handlers.training.getAllYouTubeVideosByTechnologyName);
 	self.app.get('/api/getYouTubeVideosByCourseId/:course_id', handlers.training.getYouTubeVideosByCourseId);
 
+
+   // create learning discussions
+   self.app.get('/api/getAllDiscussions', handlers.learning.getAllDiscussion);
+   self.app.get('/api/getDiscussion/:Discussion', handlers.learning.getDiscussion);
+   self.app.post('/api/createDiscussion', handlers.learning.createDiscussion);
+   self.app.post('/api/createvideoDiscussion/:Discussion', handlers.learning.createvideoDiscussion);
+
 	// STATIC FILES
 	self.app.use(EXPRESS.static(PATH.join(__dirname, '../'))); // defines folder for static assets
 
@@ -243,7 +251,8 @@ webServer.prototype.start = function(){
 
     var handlers = {
 	auth: new AuthHandler(),
-	training: new TrainingHandler()
+	training: new TrainingHandler(),
+	learning : new LearningHandler()
     };
 
 	// set routes first
