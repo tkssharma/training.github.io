@@ -81,7 +81,7 @@ function config($stateProvider, $urlRouterProvider) {
 	})
 	.state("DevOps", {
 		url : "/DevOps",
-		templateUrl : "app/pages/web.html",
+		templateUrl : "app/pages/DevOps.html",
         resolve : {
 			mymessages1 : [
 			'Mainfactory',
@@ -255,7 +255,7 @@ function config($stateProvider, $urlRouterProvider) {
 	})
 	.state("DevOps.technology", {
 		url : "/:course_id",
-		templateUrl : "app/pages/web_technology.html",
+		templateUrl : "app/pages/DevOps_technology.html",
 
 		 resolve : {
 			mymessages1 : [
