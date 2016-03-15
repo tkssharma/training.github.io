@@ -11,11 +11,9 @@ var TrainingHandler = function() {
 	this.createTraining = createTraining;
 	this.getAllTraining = getAllTraining;
 	this.getAllTrainingByTechnologyName = getAllTrainingByTechnologyName;
-    //get youtube video calls
-
-    this.createYouTubeVideo = createYouTubeVideo;
-    this.getYouTubeVideosByCourseId = getYouTubeVideosByCourseId;
-    this.getAllYouTubeVideos = getAllYouTubeVideos;
+	this.createYouTubeVideo = createYouTubeVideo;
+	this.getYouTubeVideosByCourseId = getYouTubeVideosByCourseId;
+	this.getAllYouTubeVideos = getAllYouTubeVideos;
 	this.getAllYouTubeVideosByTechnologyName = getAllYouTubeVideosByTechnologyName;
 
 	console.log("TrainingHandler  Set Up");
@@ -27,21 +25,21 @@ function createTraining(req,res,next) {
 	console.log("Registering Training");
 	console.log(req.body);
 
-    var training = new Training();
+	var training = new Training();
 
-    training.training_id = req.body.trainingid;
-    training.technologytype= req.body.technologytype;
+	training.training_id = req.body.trainingid;
+	training.technologytype= req.body.technologytype;
 	training.technologyname = req.body.technologyname;
 	training.shortdescription = req.body.shortdescription;
 	training.longdescription = req.body.longdescription;
 	training.logo = req.body.logo;
 
-    training.save(function(err){
-        if (err) {
-        	return next(err);
-        }
-        res.send({'success': true});
-    });
+	training.save(function(err){
+		if (err) {
+			return next(err);
+		}
+		res.send({'success': true});
+	});
 };
 
 function getAllTraining(req,res,next) {
@@ -74,19 +72,19 @@ function createYouTubeVideo(req,res,next) {
 	console.log("Registering Training");
 	console.log(req.body);
 
-    var youtube = new Youtube();
+	var youtube = new Youtube();
 
-    youtube.course_name = req.body.coursename;
-    youtube.link = req.body.link;
+	youtube.course_name = req.body.coursename;
+	youtube.link = req.body.link;
 	youtube.description = req.body.description;
 	youtube.shortdescription = req.body.shortdescription;
 	youtube.longdescription = req.body.longdescription;
 	youtube.logo = req.body.logo;
 
-    youtube.save(function(err){
-        if (err) {return next(err);}
-        res.send({'success': true});
-    });
+	youtube.save(function(err){
+		if (err) {return next(err);}
+		res.send({'success': true});
+	});
 };
 
 function getAllYouTubeVideos(req,res,next) {

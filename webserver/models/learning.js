@@ -21,6 +21,7 @@ var DiscussionSchema =  new Schema(
 			, discussion_id: {type: String, required: false}
 			, logo: {type: String, required: false}
 			, videos: [{ type: Mongoose.Schema.Types.ObjectId, ref: 'Video' }]
+			, author: { type: Mongoose.Schema.Types.ObjectId, ref: 'Author' }
 			, date_created: {type: Date, default: Date.now}
 			, last_updated : {type: Date, default: Date.now()}
 		}
@@ -39,5 +40,18 @@ var VideoSchema = new Schema({
 });
 
 Mongoose.model('Video', VideoSchema);
+
+var AuthorSchema = new Schema({
+	name: {type: String},
+	profile: {type: String},
+             twitter: {type: String},
+	facebook : {type: String},
+	linkedin : {type: String},
+	technology: {type: String},
+	date_created: {type: Date, default: Date.now},
+	discussion: { type: Mongoose.Schema.Types.ObjectId, ref: 'Discussion' }
+});
+
+Mongoose.model('Author', AuthorSchema);
 
 
