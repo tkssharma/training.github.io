@@ -14,7 +14,8 @@
 		Mainfactory.LoadapplicationDataOneTechnology = LoadapplicationDataOneTechnology;
 		Mainfactory.LoadYoutubeDataOneTechnology = LoadYoutubeDataOneTechnology;
 		Mainfactory.LoadYoutubeDataOneCourse = LoadYoutubeDataOneCourse;
-
+		Mainfactory.LoadAllDiscussions = LoadAllDiscussions
+		Mainfactory.LoadDiscussionVideo = LoadDiscussionVideo;
 
 		return Mainfactory;
 		function LoadapplicationData ()
@@ -106,6 +107,39 @@
 						});
 			return deferred.promise;
 		}
+		function LoadAllDiscussions()
+		{
+			var deferred = $q.defer();
+
+			$http.get(
+				'/api/getAllDiscussions')
+			.success(function(response) {
+				deferred.resolve(response);
+				 $rootScope.Alldiscussions = response;
+
+			}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+			return deferred.promise;
+		}
+		function LoadDiscussionVideo(id)
+		{
+			var deferred = $q.defer();
+
+			$http.get(
+				'/api/getDiscussion/'+id)
+			.success(function(response) {
+				deferred.resolve(response);
+				 $rootScope.discussionwithVideos= response;
+
+			}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+			return deferred.promise;
+		}
+
 
 	}
 }) ();

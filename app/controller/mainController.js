@@ -16,6 +16,7 @@ angular.module('youtubeportal')
 
 		$rootScope.resourceData = resourceData;
 		console.log($rootScope.resourceData);
+		$scope.video = {};
 
 		$scope.submitVideo = function(form)
 		{
@@ -39,6 +40,49 @@ angular.module('youtubeportal')
 		});
 
 		}
+
+		$scope.submitDiscussion = function(form)
+		{
+			console.log($scope.training);
+
+			if(form.$invalid)
+			{
+				$scope.discussionSubmitted = true;
+				return;
+			}
+			$http.post(
+				'/api/createDiscussion',$scope.training)
+			.success(function(response) {
+
+			  $rootScope.Alldiscussions = response;
+
+			}).error(function(error) {
+													// Handle error case
+
+		             });
+
+		}
+		$scope.submitDiscussionVideo = function(form,id)
+		{
+			console.log($scope.video);
+
+			if(form.$invalid)
+			{
+				$scope.submitDiscussionVideo = true;
+				return;
+			}
+			$http.post(
+				'/api/createvideoDiscussion/'+id,$scope.video)
+			.success(function(response) {
+
+			  alert('video added to ID'+id);
+
+			}).error(function(error) {
+													// Handle error case
+
+		             });
+
+		}
 		$scope.createTraining = function(form)
 		{
 			if(form.$invalid)
@@ -54,9 +98,7 @@ angular.module('youtubeportal')
 				console.log("SUCCESS");
 
 			}).error(function(error) {
-													// Handle error case
-
-												});
+										});
 		}
 
 

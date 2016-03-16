@@ -18,6 +18,7 @@ var DiscussionSchema =  new Schema(
 			, videos: {type: Date, required: false}
 			, technology: {type: String, required: false}
 			, longDescription: {type: String, required: false}
+			, shortDescription: {type: String, required: false}
 			, discussion_id: {type: String, required: false}
 			, logo: {type: String, required: false}
 			, videos: [{ type: Mongoose.Schema.Types.ObjectId, ref: 'Video' }]

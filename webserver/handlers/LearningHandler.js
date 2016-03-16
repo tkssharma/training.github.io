@@ -45,15 +45,20 @@ function createDiscussion(req,res,next) {
 	var discussion = new Discussion();
 	discussion.discussion_id = req.body.discussion_id;
 	discussion.topicName = req.body.topicName;
-	discussion.description = req.body.description;
-	discussion.logo = req.body.longDescription;
+	discussion.shortDescription = req.body.shortDescription;
+              discussion.longDescription = req.body.longDescription;
+	discussion.logo = req.body.logo;
 	discussion.technology = req.body.technology;
-	discussion.longDescription = req.body.longDescription;
 	discussion.save(function(err){
 		if (err) {
 			return next(err);
 		}
-		res.send({'success': true});
+		Discussion.find().populate('author')
+		.populate('videos').exec(function(err, Discussion){
+			if (err) {next(err);};
+			res.json(Discussion);
+		});
+
 	});
 };
 function createAuthorofDiscussion(req,res,next) {

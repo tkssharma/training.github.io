@@ -60,7 +60,20 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory',
 			function(Mainfactory) {
 				return Mainfactory
-				.LoadYoutubeData();
+				.LoadAllDiscussions();
+			} ]
+		}
+
+	})
+	.state("playlists.videos", {
+		url : "/videos/:ID",
+		templateUrl : "app/pages/playlistsVideos.html",
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadDiscussionVideo($stateParams.ID);
 			} ]
 		}
 
@@ -374,6 +387,29 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("createTraining", {
 		url : "/createTraining",
 		templateUrl : "app/pages/createTraining.html"
+
+	})
+	.state("createDiscussion", {
+		url : "/createDiscussion",
+		templateUrl : "app/pages/createDiscussion.html",
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadAllDiscussions();
+			} ]
+		}
+
+	})
+	.state("createDiscussion.addDiscussionvideo", {
+		url : "/addDiscussionvideo/:id",
+		templateUrl : "app/pages/addDiscussionvideo.html"
+
+	})
+	.state("createDiscussion.addDiscussionAuthor", {
+		url : "/addDiscussionAuthor/:id",
+		templateUrl : "app/pages/addDiscussionAuthor.html"
 
 	})
 	.state("createVideo", {
