@@ -3008,7 +3008,6 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 .block-lessons-series .media-holder {
 	background: #555;
-	min-height: 180px;
 	text-align: center;
 	position: relative;
 	overflow: hidden
