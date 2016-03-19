@@ -489,6 +489,12 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+	.state("welcome", {
+		url : "/welcome",
+		templateUrl : "app/pages/welcome.html",
+
+
+	})
 	.state("playlists", {
 		url : "/playlists",
 		templateUrl : "app/pages/playlists.html",
@@ -497,7 +503,20 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory',
 			function(Mainfactory) {
 				return Mainfactory
-				.LoadYoutubeData();
+				.LoadAllDiscussions();
+			} ]
+		}
+
+	})
+	.state("playlists.videos", {
+		url : "/videos/:ID",
+		templateUrl : "app/pages/playlistsVideos.html",
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadDiscussionVideo($stateParams.ID);
 			} ]
 		}
 
@@ -505,6 +524,26 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("web", {
 		url : "/web",
 		templateUrl : "app/pages/web.html",
+        resolve : {
+			mymessages1 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadapplicationData();
+			} ],
+			mymessages2 : [
+			'Mainfactory',
+			function(Mainfactory) {
+				return Mainfactory
+				.LoadYoutubeData();
+			} ]
+
+		}
+
+	})
+	.state("DevOps", {
+		url : "/DevOps",
+		templateUrl : "app/pages/DevOps.html",
         resolve : {
 			mymessages1 : [
 			'Mainfactory',
@@ -626,6 +665,20 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+	.state("DevOps.technology.youtube", {
+		url : "/:youtube_id",
+		templateUrl : "app/pages/common_technology_youtube.html",
+
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+			} ]
+		}
+
+	})
 
 	.state("java.technology.youtube", {
 		url : "/:youtube_id",
@@ -662,6 +715,28 @@ function config($stateProvider, $urlRouterProvider) {
 		}
 
 	})
+	.state("DevOps.technology", {
+		url : "/:course_id",
+		templateUrl : "app/pages/DevOps_technology.html",
+
+		 resolve : {
+			mymessages1 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadYoutubeDataOneTechnology($stateParams.course_id);
+			} ],
+			mymessages2 : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadapplicationDataOneTechnology($stateParams.course_id);
+			} ]
+
+		}
+
+	})
+
 	.state("java.technology", {
 		url : "/:course_id",
 		templateUrl : "app/pages/java_technology.html",
@@ -757,6 +832,29 @@ function config($stateProvider, $urlRouterProvider) {
 		templateUrl : "app/pages/createTraining.html"
 
 	})
+	.state("createDiscussion", {
+		url : "/createDiscussion",
+		templateUrl : "app/pages/createDiscussion.html",
+		resolve : {
+			mymessages : [
+			'Mainfactory','$stateParams',
+			function(Mainfactory,$stateParams) {
+				return Mainfactory
+				.LoadAllDiscussions();
+			} ]
+		}
+
+	})
+	.state("createDiscussion.addDiscussionvideo", {
+		url : "/addDiscussionvideo/:id",
+		templateUrl : "app/pages/addDiscussionvideo.html"
+
+	})
+	.state("createDiscussion.addDiscussionAuthor", {
+		url : "/addDiscussionAuthor/:id",
+		templateUrl : "app/pages/addDiscussionAuthor.html"
+
+	})
 	.state("createVideo", {
 		url : "/createVideo",
 		templateUrl : "app/pages/createVideo.html"
@@ -837,11 +935,12 @@ angular.module('youtubeportal')
 	"$scope",
 	"$rootScope",
 	'resourceData',
-
-	function parentCntl($scope, $rootScope,resourceData) {
+	'$http',
+	function parentCntl($scope, $rootScope,resourceData,$http) {
 
 		$rootScope.resourceData = resourceData;
 		console.log($rootScope.resourceData);
+		$scope.video = {};
 
 		$scope.submitVideo = function(form)
 		{
@@ -862,7 +961,50 @@ angular.module('youtubeportal')
 			}).error(function(error) {
 													// Handle error case
 
-												});
+		});
+
+		}
+
+		$scope.submitDiscussion = function(form)
+		{
+			console.log($scope.training);
+
+			if(form.$invalid)
+			{
+				$scope.discussionSubmitted = true;
+				return;
+			}
+			$http.post(
+				'/api/createDiscussion',$scope.training)
+			.success(function(response) {
+
+			  $rootScope.Alldiscussions = response;
+
+			}).error(function(error) {
+													// Handle error case
+
+		             });
+
+		}
+		$scope.submitDiscussionVideo = function(form,id)
+		{
+			console.log($scope.video);
+
+			if(form.$invalid)
+			{
+				$scope.submitDiscussionVideo = true;
+				return;
+			}
+			$http.post(
+				'/api/createvideoDiscussion/'+id,$scope.video)
+			.success(function(response) {
+
+			  alert('video added to ID'+id);
+
+			}).error(function(error) {
+													// Handle error case
+
+		             });
 
 		}
 		$scope.createTraining = function(form)
@@ -880,9 +1022,7 @@ angular.module('youtubeportal')
 				console.log("SUCCESS");
 
 			}).error(function(error) {
-													// Handle error case
-
-												});
+										});
 		}
 
 
@@ -939,7 +1079,7 @@ angular.module("youtubeportal").filter('trusted', ['$sce', function ($sce) {
 					AuthenticationService.saveUserId(response.user.user_id);
 					AuthenticationService.saveUserName($scope.data.email);
 					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-					$state.go('all');
+					$state.go('welcome');
 				} else {
 					$(".page-loading").addClass("hidden");
 					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
@@ -1001,7 +1141,7 @@ angular.module("youtubeportal").filter('trusted', ['$sce', function ($sce) {
 					AuthenticationService.saveUserId(response.user.user_id);
 					AuthenticationService.saveUserName(response.user.username);
 					$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-					$state.go('all');
+					$state.go('welcome');
 				} else {
 					$(".page-loading").addClass("hidden");
 					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
@@ -1038,7 +1178,7 @@ angular.module("youtubeportal").filter('trusted', ['$sce', function ($sce) {
 			.then(function(response) {
 			$(".page-loading").addClass("hidden");
 				if (response.success) {
-					$state.go('login');
+					$state.go('welcome');
 				}
 				else
 				{
@@ -1363,7 +1503,8 @@ angular.module("youtubeportal").filter('trusted', ['$sce', function ($sce) {
 		Mainfactory.LoadapplicationDataOneTechnology = LoadapplicationDataOneTechnology;
 		Mainfactory.LoadYoutubeDataOneTechnology = LoadYoutubeDataOneTechnology;
 		Mainfactory.LoadYoutubeDataOneCourse = LoadYoutubeDataOneCourse;
-
+		Mainfactory.LoadAllDiscussions = LoadAllDiscussions
+		Mainfactory.LoadDiscussionVideo = LoadDiscussionVideo;
 
 		return Mainfactory;
 		function LoadapplicationData ()
@@ -1455,6 +1596,39 @@ angular.module("youtubeportal").filter('trusted', ['$sce', function ($sce) {
 						});
 			return deferred.promise;
 		}
+		function LoadAllDiscussions()
+		{
+			var deferred = $q.defer();
+
+			$http.get(
+				'/api/getAllDiscussions')
+			.success(function(response) {
+				deferred.resolve(response);
+				 $rootScope.Alldiscussions = response;
+
+			}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+			return deferred.promise;
+		}
+		function LoadDiscussionVideo(id)
+		{
+			var deferred = $q.defer();
+
+			$http.get(
+				'/api/getDiscussion/'+id)
+			.success(function(response) {
+				deferred.resolve(response);
+				 $rootScope.discussionwithVideos= response;
+
+			}).error(function(error) {
+						// Handle error case
+						deferred.reject(error);
+					});
+			return deferred.promise;
+		}
+
 
 	}
 }) ();
