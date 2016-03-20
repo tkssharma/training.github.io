@@ -18,11 +18,11 @@
           <div
             ng-repeat="app in applicationData  track by $index">
 
-            <a href="#/all/{{app.technologyname}}">
+            <a href="#/all/{{app._id}}">
               <div class="col-sm-6 col-md-4 item">
 
                 <div class="logo-holder">
-                  <img alt="{{app.technologyname}}" class="tech-logo"
+                  <img alt="{{app._id}}" class="tech-logo"
                     src="img/{{app.logo}}.png" />
                 </div>
 

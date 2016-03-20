@@ -87,12 +87,6 @@ function config($stateProvider, $urlRouterProvider) {
 			function(Mainfactory) {
 				return Mainfactory
 				.LoadapplicationData();
-			} ],
-			mymessages2 : [
-			'Mainfactory',
-			function(Mainfactory) {
-				return Mainfactory
-				.LoadYoutubeData();
 			} ]
 
 		}
@@ -107,12 +101,6 @@ function config($stateProvider, $urlRouterProvider) {
 			function(Mainfactory) {
 				return Mainfactory
 				.LoadapplicationData();
-			} ],
-			mymessages2 : [
-			'Mainfactory',
-			function(Mainfactory) {
-				return Mainfactory
-				.LoadYoutubeData();
 			} ]
 
 		}
@@ -127,12 +115,6 @@ function config($stateProvider, $urlRouterProvider) {
 			function(Mainfactory) {
 				return Mainfactory
 				.LoadapplicationData();
-			} ],
-			mymessages2 : [
-			'Mainfactory',
-			function(Mainfactory) {
-				return Mainfactory
-				.LoadYoutubeData();
 			} ]
 
 		}
@@ -147,32 +129,20 @@ function config($stateProvider, $urlRouterProvider) {
 			function(Mainfactory) {
 				return Mainfactory
 				.LoadapplicationData();
-			} ],
-			mymessages2 : [
-			'Mainfactory',
-			function(Mainfactory) {
-				return Mainfactory
-				.LoadYoutubeData();
 			} ]
 
 		}
 
 	})
 	.state("all.technology", {
-		url : "/:course_id",
+		url : "/:trainingid",
 		templateUrl : "app/pages/common_technology.html",
 		 resolve : {
 			mymessages1 : [
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneTechnology($stateParams.course_id);
-			} ],
-			mymessages2 : [
-			'Mainfactory','$stateParams',
-			function(Mainfactory,$stateParams) {
-				return Mainfactory
-				.LoadapplicationDataOneTechnology($stateParams.course_id);
+				.getTrainingByTrainingID($stateParams.trainingid);
 			} ]
 
 		}
@@ -180,14 +150,14 @@ function config($stateProvider, $urlRouterProvider) {
 	})
 
 	.state("all.technology.youtube", {
-		url : "/:youtube_id",
+		url : "/:youtubeid",
 		templateUrl : "app/pages/common_technology_youtube.html",
 		resolve : {
 			mymessages : [
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+				.getYouTubeVideosByID($stateParams.youtubeid);
 			} ]
 		}
 
@@ -202,7 +172,7 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+				.getYouTubeVideosByID($stateParams.youtube_id);
 			} ]
 		}
 
@@ -217,7 +187,7 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+				.getYouTubeVideosByID($stateParams.youtube_id);
 			} ]
 		}
 
@@ -231,7 +201,7 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+				.getYouTubeVideosByID($stateParams.youtube_id);
 			} ]
 		}
 
@@ -245,14 +215,14 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneCourse($stateParams.youtube_id);
+				.getYouTubeVideosByID($stateParams.youtube_id);
 			} ]
 		}
 
 	})
 
 	.state("web.technology", {
-		url : "/:course_id",
+		url : "/:trainingid",
 		templateUrl : "app/pages/web_technology.html",
 
 		 resolve : {
@@ -260,20 +230,14 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneTechnology($stateParams.course_id);
-			} ],
-			mymessages2 : [
-			'Mainfactory','$stateParams',
-			function(Mainfactory,$stateParams) {
-				return Mainfactory
-				.LoadapplicationDataOneTechnology($stateParams.course_id);
+				.getTrainingByTrainingID($stateParams.trainingid);
 			} ]
 
 		}
 
 	})
 	.state("DevOps.technology", {
-		url : "/:course_id",
+		url : "/:trainingid",
 		templateUrl : "app/pages/DevOps_technology.html",
 
 		 resolve : {
@@ -281,13 +245,7 @@ function config($stateProvider, $urlRouterProvider) {
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneTechnology($stateParams.course_id);
-			} ],
-			mymessages2 : [
-			'Mainfactory','$stateParams',
-			function(Mainfactory,$stateParams) {
-				return Mainfactory
-				.LoadapplicationDataOneTechnology($stateParams.course_id);
+				.getTrainingByTrainingID($stateParams.trainingid);
 			} ]
 
 		}
@@ -295,40 +253,28 @@ function config($stateProvider, $urlRouterProvider) {
 	})
 
 	.state("java.technology", {
-		url : "/:course_id",
+		url : "/:trainingid",
 		templateUrl : "app/pages/java_technology.html",
 		  resolve : {
 			mymessages1 : [
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneTechnology($stateParams.course_id);
-			} ],
-			mymessages2 : [
-			'Mainfactory','$stateParams',
-			function(Mainfactory,$stateParams) {
-				return Mainfactory
-				.LoadapplicationDataOneTechnology($stateParams.course_id);
+				.getTrainingByTrainingID($stateParams.trainingid);
 			} ]
 
 		}
 
 	})
 	.state("mobile.technology", {
-		url : "/:course_id",
+		url : "/:trainingid",
 		templateUrl : "app/pages/mobile_technology.html",
 		  resolve : {
 			mymessages1 : [
 			'Mainfactory','$stateParams',
 			function(Mainfactory,$stateParams) {
 				return Mainfactory
-				.LoadYoutubeDataOneTechnology($stateParams.course_id);
-			} ],
-			mymessages2 : [
-			'Mainfactory','$stateParams',
-			function(Mainfactory,$stateParams) {
-				return Mainfactory
-				.LoadapplicationDataOneTechnology($stateParams.course_id);
+				.getTrainingByTrainingID($stateParams.trainingid);
 			} ]
 
 		}
@@ -410,11 +356,6 @@ function config($stateProvider, $urlRouterProvider) {
 	.state("createDiscussion.addDiscussionAuthor", {
 		url : "/addDiscussionAuthor/:id",
 		templateUrl : "app/pages/addDiscussionAuthor.html"
-
-	})
-	.state("createVideo", {
-		url : "/createVideo",
-		templateUrl : "app/pages/createVideo.html"
 
 	});
 	$urlRouterProvider.otherwise("/");

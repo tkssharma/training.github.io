@@ -10,23 +10,17 @@ var TrainingHandler = function() {
 	// get training calls
 	this.createTraining = createTraining;
 	this.getAllTraining = getAllTraining;
-	this.getAllTrainingByTechnologyName = getAllTrainingByTechnologyName;
+	this.getTrainingByTrainingID = getTrainingByTrainingID;
 	this.createYouTubeVideo = createYouTubeVideo;
-	this.getYouTubeVideosByCourseId = getYouTubeVideosByCourseId;
-	this.getAllYouTubeVideos = getAllYouTubeVideos;
-	this.getAllYouTubeVideosByTechnologyName = getAllYouTubeVideosByTechnologyName;
+	this.getYouTubeVideosByID = getYouTubeVideosByID;
 
 	console.log("TrainingHandler  Set Up");
 };
 
-
-
 function createTraining(req,res,next) {
 	console.log("Registering Training");
 	console.log(req.body);
-
 	var training = new Training();
-
 	training.training_id = req.body.trainingid;
 	training.technologytype= req.body.technologytype;
 	training.technologyname = req.body.technologyname;
@@ -43,8 +37,8 @@ function createTraining(req,res,next) {
 };
 
 function getAllTraining(req,res,next) {
-	Training.find({}, function (err, youtubevideos) {
 
+	Training.find({}).exec(function (err, youtubevideos) {
 		if (err) {return next(err);}
 		else {
 			res.send(youtubevideos);
@@ -52,70 +46,54 @@ function getAllTraining(req,res,next) {
 	});
 };
 
-function getAllTrainingByTechnologyName(req,res,next) {
-	console.log(req.params.technology);
-	Training.find({technologyname : req.params.technology}, function (err, training) {
-		if (err) {return next(err);}
-		else {
-			res.send(training);
-		}
-	});
+function getTrainingByTrainingID(req,res,next) {
+	Training.findById(req.params.trainingid).populate('youtube')
+		.exec(function(err, training){
+			if (err) {next(err);};
+			res.json(training);
+		});
 };
-
-//..............................................
-
-
-
-
 
 function createYouTubeVideo(req,res,next) {
-	console.log("Registering Training");
-	console.log(req.body);
-
+	console.log("Registering Video");
 	var youtube = new Youtube();
+	var query = Training.findById(req.params.trainingid);
+	query.exec(function(err, training){
+		if (err) {return next(err);};
+		if (!training) {return next(new Error('can\'t find post'))};
 
-	youtube.course_name = req.body.coursename;
-	youtube.link = req.body.link;
-	youtube.description = req.body.description;
-	youtube.shortdescription = req.body.shortdescription;
-	youtube.longdescription = req.body.longdescription;
-	youtube.logo = req.body.logo;
+		req.training = training;
+		var youtube = new Youtube();
+		youtube.course_name = req.body.coursename;
+		youtube.link = req.body.link;
+		youtube.description = req.body.description;
+		youtube.shortdescription = req.body.shortdescription;
+		youtube.longdescription = req.body.longdescription;
+		youtube.logo = req.body.logo;
+		youtube.training = req.training;
 
-	youtube.save(function(err){
-		if (err) {return next(err);}
-		res.send({'success': true});
-	});
-};
+		youtube.save(function(err, youtube){
+			if (err) {return next(err);};
 
-function getAllYouTubeVideos(req,res,next) {
-	Youtube.find({}, function (err, youtube) {
-		if (err) {return next(err);}
-		else {
-			res.send(youtube);
-		}
-	});
-};
-
-function getYouTubeVideosByCourseId(req,res,next) {
-	console.log(req.params.course_id);
-	Youtube.find({course_id : req.params.course_id}, function (err, youtube) {
-		if (err) {return next(err);}
-		else {
-			res.send(youtube);
-		}
+			req.training.youtube.push(youtube);
+			req.training.save(function(err,training){
+				if (err) {return next(err);};
+				res.json(training);
+			});
+		});
 	});
 };
 
 
-function getAllYouTubeVideosByTechnologyName(req,res,next) {
-	console.log(req.params.technology);
-	Youtube.find({technology : req.params.technology}, function (err, youtube) {
-		if (err) {return next(err);}
-		else {
-			res.send(youtube);
-		}
-	});
+function getYouTubeVideosByID(req,res,next) {
+	console.log(req.params.youtubeid);
+	Youtube.findById(req.params.youtubeid)
+		.exec(function(err, youtube){
+			if (err) {next(err);};
+			res.json(youtube);
+		});
 };
+
 
 
 module.exports = TrainingHandler;

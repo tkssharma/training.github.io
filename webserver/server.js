@@ -158,16 +158,11 @@ webServer.prototype._setRoutes = function(handlers){
 	self.app.post('/api/users/reset', handlers.auth.ResetPassword);
 	self.app.post('/api/users/login/resetpassword', handlers.auth.ResetPasswordCallback);
 
-
 	self.app.post('/api/createTraining', handlers.training.createTraining);
 	self.app.get('/api/getAllTraining',handlers.training.getAllTraining);
-	self.app.get('/api/getAllTrainingByTechnologyName/:technology', handlers.training.getAllTrainingByTechnologyName);
-
-	self.app.post('/api/createYouTubeVideo', handlers.training.createYouTubeVideo);
-	self.app.get('/api/getAllYouTubeVideos', handlers.training.getAllYouTubeVideos);
-	self.app.get('/api/getAllYouTubeVideosByTechnologyName/:technology', handlers.training.getAllYouTubeVideosByTechnologyName);
-	self.app.get('/api/getYouTubeVideosByCourseId/:course_id', handlers.training.getYouTubeVideosByCourseId);
-
+	self.app.get('/api/getTrainingByTrainingID/:trainingid', handlers.training.getTrainingByTrainingID);
+	self.app.post('/api/createYouTubeVideo/:trainingid', handlers.training.createYouTubeVideo);
+	self.app.get('/api/getYouTubeVideosByID/:youtubeid', handlers.training.getYouTubeVideosByID);
 
 	   // create learning discussions
 	   self.app.get('/api/getAllDiscussions', handlers.learning.getAllDiscussion);

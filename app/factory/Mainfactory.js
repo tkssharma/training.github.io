@@ -10,10 +10,8 @@
 		var Mainfactory = {};
 
 		Mainfactory.LoadapplicationData = LoadapplicationData;
-		Mainfactory.LoadYoutubeData = LoadYoutubeData;
-		Mainfactory.LoadapplicationDataOneTechnology = LoadapplicationDataOneTechnology;
-		Mainfactory.LoadYoutubeDataOneTechnology = LoadYoutubeDataOneTechnology;
-		Mainfactory.LoadYoutubeDataOneCourse = LoadYoutubeDataOneCourse;
+		Mainfactory.getTrainingByTrainingID = getTrainingByTrainingID;
+		Mainfactory.getYouTubeVideosByID = getYouTubeVideosByID;
 		Mainfactory.LoadAllDiscussions = LoadAllDiscussions
 		Mainfactory.LoadDiscussionVideo = LoadDiscussionVideo;
 
@@ -37,69 +35,35 @@
 				return deferred.promise;
 			}
 		}
-		function LoadYoutubeData()
+		function getTrainingByTrainingID(trainingid)
 		{
 			var deferred = $q.defer();
-			if ($rootScope.YouTubeData) {
-				return true;
-			} else {
+
 				$http.get(
-					'/api/getAllYouTubeVideos')
+					'/api/getTrainingByTrainingID/'+trainingid)
 				.success(function(response) {
 					deferred.resolve(response);
-					$rootScope.YouTubeData = response;
+					$rootScope.TrainingData = response;
+					console.log($rootScope.TrainingData );
 
 				}).error(function(error) {
 						// Handle error case
 						deferred.reject(error);
 					});
 				return deferred.promise;
-			}
+
 
 		}
-		function LoadapplicationDataOneTechnology(course_id)
+
+		function getYouTubeVideosByID(youtube_id)
 		{
 			var deferred = $q.defer();
 
 			$http.get(
-				'/api/getAllTrainingByTechnologyName/'+ course_id)
+				'/api/getYouTubeVideosByID/'+youtube_id)
 			.success(function(response) {
 				deferred.resolve(response);
-				$rootScope.applicationDataOneTech = response;
-
-			}).error(function(error) {
-						// Handle error case
-						deferred.reject(error);
-					});
-			return deferred.promise;
-
-
-		}
-		function LoadYoutubeDataOneTechnology(course_id)
-		{
-			var deferred = $q.defer();
-
-			$http.get(
-				'/api/getAllYouTubeVideosByTechnologyName/'+course_id)
-			.success(function(response) {
-				deferred.resolve(response);
-				$rootScope.YouTubeDataOneTech = response;
-
-			}).error(function(error) {
-						// Handle error case
-						deferred.reject(error);
-					});
-			return deferred.promise;
-		}
-		function LoadYoutubeDataOneCourse(youtube_id)
-		{
-			var deferred = $q.defer();
-
-			$http.get(
-				'/api/getYouTubeVideosByCourseId/'+youtube_id)
-			.success(function(response) {
-				deferred.resolve(response);
-				$rootScope.YouTubeDataOneCourse= response;
+				$rootScope.YouTubeData= response;
 
 			}).error(function(error) {
 							// Handle error case
@@ -115,7 +79,7 @@
 				'/api/getAllDiscussions')
 			.success(function(response) {
 				deferred.resolve(response);
-				 $rootScope.Alldiscussions = response;
+				$rootScope.Alldiscussions = response;
 
 			}).error(function(error) {
 						// Handle error case
@@ -131,7 +95,7 @@
 				'/api/getDiscussion/'+id)
 			.success(function(response) {
 				deferred.resolve(response);
-				 $rootScope.discussionwithVideos= response;
+				$rootScope.discussionwithVideos= response;
 
 			}).error(function(error) {
 						// Handle error case

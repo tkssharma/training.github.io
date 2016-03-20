@@ -12,17 +12,17 @@
         </p>
       </div>
       <!-- title-subtitle-block -->
-
+		
       <div class="lessons-categories-holder">
         <div class="row">
           <div
             ng-repeat="app in applicationData | filter : { technologytype : 'web' } track by $index">
 
-            <a href="#/web/{{app.technologyname}}">
+            <a href="#/all/{{app._id}}">
               <div class="col-sm-6 col-md-4 item">
 
                 <div class="logo-holder">
-                  <img alt="{{app.technologyname}}" class="tech-logo"
+                  <img alt="{{app._id}}" class="tech-logo"
                     src="img/{{app.logo}}.png" />
                 </div>
 

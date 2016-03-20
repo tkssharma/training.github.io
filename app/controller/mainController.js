@@ -3,7 +3,7 @@
  * @ bootstrap module added
  */
  (function () {
- 	'use strict';
+	'use strict';
 angular.module('youtubeportal')
 .controller(
 	"parentCntl",
@@ -17,8 +17,24 @@ angular.module('youtubeportal')
 		$rootScope.resourceData = resourceData;
 		console.log($rootScope.resourceData);
 		$scope.video = {};
+		$scope.createTraining = function(form)
+			{
+				if(form.$invalid)
+				{
+					alert("invalid..");
+					$scope.trainingSubmitted = true;
+					return;
+				}
+				$http.post(
+					'/api/createTraining',$scope.training)
+				.success(function(response) {
+					alert("added");
+					console.log("SUCCESS");
 
-		$scope.submitVideo = function(form)
+				}).error(function(error) {
+											});
+			}
+		$scope.createVideoForTraining = function(form,trainingid)
 		{
 			console.log($scope.training);
 
@@ -28,11 +44,10 @@ angular.module('youtubeportal')
 				return;
 			}
 			$http.post(
-				'/api/createYouTubeVideo',$scope.video)
+				'/api/createYouTubeVideo/'+trainingid,$scope.video)
 			.success(function(response) {
-
 				console.log("SUCCESS");
-				alert("added");
+				alert("added for "+trainingid);
 
 			}).error(function(error) {
 													// Handle error case
@@ -59,7 +74,7 @@ angular.module('youtubeportal')
 			}).error(function(error) {
 													// Handle error case
 
-		             });
+					 });
 
 		}
 		$scope.submitDiscussionVideo = function(form,id)
@@ -80,26 +95,10 @@ angular.module('youtubeportal')
 			}).error(function(error) {
 													// Handle error case
 
-		             });
+					 });
 
 		}
-		$scope.createTraining = function(form)
-		{
-			if(form.$invalid)
-			{
-				alert("invalid..");
-				$scope.trainingSubmitted = true;
-				return;
-			}
-			$http.post(
-				'/api/createTraining',$scope.training)
-			.success(function(response) {
-				alert("added");
-				console.log("SUCCESS");
-
-			}).error(function(error) {
-										});
-		}
+		
 
 
 	}]);

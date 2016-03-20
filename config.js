@@ -8,7 +8,7 @@ var config = {
 
 			WEBSERVER 					: {
 				PORT 					: 3000,
-				DBURI                   : 'mongodb://heroku_42vmm1tq:g4nm4o3t58ejehc79g1rdr3jah@ds037205.mongolab.com:37205/heroku_42vmm1tq'
+				DBURI                   : 'mongodb://localhost:27017/myproject'
 			},
 
 		},

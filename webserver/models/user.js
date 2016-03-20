@@ -1,12 +1,12 @@
 var Mongoose = require("mongoose")
-	, Schema = Mongoose.Schema
-	, path = require('path')
-	, PassportLocalMongoose = require("passport-local-mongoose")
-	, Crypto = require("crypto")
-	, JWT = require("jwt-simple")
-	, config = require('../../config')
-	, CONSTANT = require('../../constants')
-	, UUID = require("node-uuid");
+, Schema = Mongoose.Schema
+, path = require('path')
+, PassportLocalMongoose = require("passport-local-mongoose")
+, Crypto = require("crypto")
+, JWT = require("jwt-simple")
+, config = require('../../config')
+, CONSTANT = require('../../constants')
+, UUID = require("node-uuid");
 
 var Token = new Schema({
 	token: {type: String},
@@ -30,31 +30,31 @@ Token.statics.hasExpired= function(created) {
 var TokenModel = Mongoose.model('Token', Token);
 
 var UserSchema =  new Schema(
-		{
-			user_id : {type: String, default: function getUUID(){
-				return UUID.v1();
-			}}
-			, firstname: {type: String, required: false}
-			, lasttname: {type: String, required: false}
-			, birthdata: {type: Date, required: false}
-			, description: {type: String, required: false}
-			, email_business: {type: String, required: false}
-			, personal_mobile: {type: String, required: false}
-			, business_mobile: {type: String, required: false}
-			, fixed_number: {type: String, required: false}
-			, credit_card : {type: Schema.ObjectId, ref: CreditCardSchema, get: Obfuscate}
-			, profile_photo: {type: String, required: false}
-			, email: {type: String, required: true}
-			, access_token: {type: String, required: false}
-			, city: {type:String, required:false}
-			, token: {type: Object}
-			, date_created: {type: Date, default: Date.now}
-			, reset_token: {type: String , required: false}
-			, reset_token_expires_millis: {type: Number}
-			, facebook_profile_id: {type: String, required: false}
-			, google_profile_id: {type: String, required: false}
-			, last_updated : {type: Date, default: Date.now()}
-		}
+{
+	user_id : {type: String, default: function getUUID(){
+		return UUID.v1();
+	}}
+	, firstname: {type: String, required: false}
+	, lasttname: {type: String, required: false}
+	, birthdata: {type: Date, required: false}
+	, description: {type: String, required: false}
+	, email_business: {type: String, required: false}
+	, personal_mobile: {type: String, required: false}
+	, business_mobile: {type: String, required: false}
+	, fixed_number: {type: String, required: false}
+	, credit_card : {type: Schema.ObjectId, ref: CreditCardSchema, get: Obfuscate}
+	, profile_photo: {type: String, required: false}
+	, email: {type: String, required: true}
+	, access_token: {type: String, required: false}
+	, city: {type:String, required:false}
+	, token: {type: Object}
+	, date_created: {type: Date, default: Date.now}
+	, reset_token: {type: String , required: false}
+	, reset_token_expires_millis: {type: Number}
+	, facebook_profile_id: {type: String, required: false}
+	, google_profile_id: {type: String, required: false}
+	, last_updated : {type: Date, default: Date.now()}
+}
 );
 
 function Obfuscate(CreditCard) {
@@ -148,8 +148,8 @@ UserSchema.statics.createToken = function(email, callback) {
 			} else {
 				console.log("about to cb with usr.token.token: " + usr.token.token);
 				callback(false, usr);//token object, in turn, has a token property :)
-			}
-		});
+	}
+});
 	});
 };
 
