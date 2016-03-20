@@ -9,7 +9,7 @@
 }
 .block-lessons-series .media-holder {
     background: #555;
-    max-height: 200px !important;
+    max-height: 180px !important;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -3005,6 +3005,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0
 }
+
 
 .block-lessons-series .media-holder {
 	background: #555;
@@ -19631,7 +19632,7 @@ footer .social-holder a:hover {
 }
 
 .block-lessons-series .item {
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	padding-bottom: 10px
 }
 
